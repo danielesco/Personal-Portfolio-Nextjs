@@ -28,6 +28,12 @@ import LightAndDarkModeButton from '../components/LightAndDarkButton';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
+  const theme = useMantineTheme();
+
+  const [opened, setOpened] = useState(false);
+  const [active, setActive] = useState(0);
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'light',
@@ -37,11 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  useHotkeys([['mod+J', () => toggleColorScheme()]]);
-  const theme = useMantineTheme();
 
-  const [opened, setOpened] = useState(false);
-  const [active, setActive] = useState(0);
 
 
   return (
@@ -61,6 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           fontWeight: 400,
 
         },
+
         colors: {
           // Add your color
           'ocean-blue': ['#7AD1DD', '#5FCCDB', '#44CADC', '#2AC9DE', '#1AC2D9', '#11B7CD', '#09ADC3', '#0E99AC', '#128797', '#147885'],
@@ -75,14 +78,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             '#1d1e30',
             '#0c0d21',
             '#01010a',
-          ]
+          ],
+
         },
 
-
       }} withGlobalStyles withNormalizeCSS>
+
         <AppShell styles={{
           main: {
-            background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+            background: colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
           },
         }}
           navbarOffsetBreakpoint="lg"
@@ -94,7 +98,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <Container>
                     <Stack>
                       <Center>
-                        <Avatar radius="lg" size={200} src="../daniel_escobar_professionalportrait.jpg" />
+                        <Avatar radius="lg" size={200} src="../daniel_escobar.jpg" />
                       </Center>
                       <Center>
                         <Title transform="uppercase">Daniel Escobar</Title>
@@ -151,10 +155,15 @@ function MyApp({ Component, pageProps }: AppProps) {
               </div>
             </Header>
           }>
-          <Component {...pageProps} />
+
+          <Container size={2000}>
+            <Component {...pageProps} />
+
+          </Container>
         </AppShell>
+
       </MantineProvider>
-    </ColorSchemeProvider>
+    </ColorSchemeProvider >
   )
 }
 
