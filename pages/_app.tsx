@@ -20,15 +20,17 @@ import {
   Container,
   Stack,
   Divider,
-  Space, ScrollArea, Center, NavLink, Badge, Box
+  Space, ScrollArea, Center, NavLink, Badge, Box, HoverCard, Button
 } from '@mantine/core';
 
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import LightAndDarkModeButton from '../components/LightAndDarkButton';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-
+  const router = useRouter();
   useHotkeys([['mod+J', () => toggleColorScheme()]]);
   const theme = useMantineTheme();
 
@@ -113,13 +115,21 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Divider size="sm" />
                 <Space h="md"></Space>
                 <Navbar.Section >
-                  {/* 
-                            <NavLink label="About" component={Link} to="/about" ></NavLink>
-                            <NavLink label="Resume" component={Link} to="/resume"></NavLink>
-                            <NavLink label="Projects" component={Link} to="/projects"></NavLink>
-                            <NavLink label="Stats" component={Link} to="/stats"></NavLink>
-                            <NavLink label="Contact" component={Link} to="/contact"></NavLink> */}
-
+                  <Link href="/about" passHref>
+                    <NavLink label="About" component="a" active={router.pathname === "/about"} ></NavLink>
+                  </Link>
+                  <Link href="/resume" passHref>
+                    <NavLink label="Resume" component="a" active={router.pathname === "/resume"} ></NavLink>
+                  </Link>
+                  <Link href="/projects" passHref>
+                    <NavLink label="Projects" component="a" active={router.pathname === "/projects"} ></NavLink>
+                  </Link>
+                  <Link href="/stats" passHref>
+                    <NavLink label="Stats" component="a" active={router.pathname === "/stats"} ></NavLink>
+                  </Link>
+                  <Link href="/contact" passHref>
+                    <NavLink label="Contact" component="a" active={router.pathname === "/contact"} ></NavLink>
+                  </Link>
                 </Navbar.Section>
 
                 <Navbar.Section>
@@ -145,11 +155,19 @@ function MyApp({ Component, pageProps }: AppProps) {
                     mr="xl"
                   />
                 </MediaQuery>
-
-                <Text size="xl" weight={700} lineClamp={1}>
-                  Daniel Escobar
-                </Text>
-
+                <HoverCard width={280} shadow="md">
+                  <HoverCard.Target>
+                    <Link href="/" passHref>
+                      <Button variant="subtle" color={colorScheme} size="lg" uppercase>Daniel Escobar</Button>
+                    </Link>
+                    {/* 
+                    <Link href="/" passHref>
+                      <Text size="xl" weight={700} lineClamp={1}>
+                        Daniel Escobar
+                      </Text>
+                    </Link> */}
+                  </HoverCard.Target>
+                </HoverCard>
                 <LightAndDarkModeButton></LightAndDarkModeButton>
 
               </div>
