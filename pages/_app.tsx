@@ -20,8 +20,10 @@ import {
   Container,
   Stack,
   Divider,
-  Space, ScrollArea, Center, NavLink, Badge, Box, HoverCard, Button
+  Space, ScrollArea, Center, NavLink, Badge, Box, HoverCard, Button, ActionIcon, Group
 } from '@mantine/core';
+
+import { IconBrandGithub, IconBrandLinkedin, IconMail } from '@tabler/icons'
 
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -100,7 +102,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <Container>
                     <Stack>
                       <Center>
-                        <Avatar radius="lg" size={200} src="../daniel_escobar.jpg" />
+                        <Link href="/" passHref>
+                          <Avatar radius="lg" size={200} src="../daniel_escobar.jpg" />
+                        </Link>
                       </Center>
                       <Center>
                         <Title transform="uppercase">Daniel Escobar</Title>
@@ -116,27 +120,37 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Space h="md"></Space>
                 <Navbar.Section >
                   <Link href="/about" passHref>
-                    <NavLink label="About" component="a" active={router.pathname === "/about"} ></NavLink>
+                    <NavLink label="About" component="a" active={router.pathname === "/about"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/resume" passHref>
-                    <NavLink label="Resume" component="a" active={router.pathname === "/resume"} ></NavLink>
+                    <NavLink label="Resume" component="a" active={router.pathname === "/resume"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/projects" passHref>
-                    <NavLink label="Projects" component="a" active={router.pathname === "/projects"} ></NavLink>
+                    <NavLink label="Projects" component="a" active={router.pathname === "/projects"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/stats" passHref>
-                    <NavLink label="Stats" component="a" active={router.pathname === "/stats"} ></NavLink>
+                    <NavLink label="Stats" component="a" active={router.pathname === "/stats"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/contact" passHref>
-                    <NavLink label="Contact" component="a" active={router.pathname === "/contact"} ></NavLink>
+                    <NavLink label="Contact" component="a" active={router.pathname === "/contact"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                 </Navbar.Section>
-
+                <Space h="md"></Space>
+                <Divider size="sm" />
+                <Space h="md"></Space>
                 <Navbar.Section>
-                  {/* <IconBrandGithub></IconBrandGithub>
-                  <IconBrandLinkedin></IconBrandLinkedin>
-                  <IconMail></IconMail> */}
-
+                  <Group>
+                    <ActionIcon variant="subtle" color={colorScheme} component='a' href="https://github.com/danielesco" target={"_blank"}>
+                      <IconBrandGithub></IconBrandGithub>
+                    </ActionIcon>
+                    <ActionIcon variant="subtle" color={colorScheme} component='a' href="https://linkedin.com/in/danieljayescobar" target={"_blank"}>
+                      <IconBrandLinkedin></IconBrandLinkedin>
+                    </ActionIcon>
+                    <ActionIcon variant="subtle" color={colorScheme} component='a' href="mailto:danjay.escobar@gmail.com">
+                      <IconMail></IconMail>
+                    </ActionIcon>
+                  </Group>
+                  <Space h="md"></Space>
                   <Text> © Daniel Escobar danielescobar.com</Text>
                 </Navbar.Section>
               </ScrollArea>
@@ -160,12 +174,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <Link href="/" passHref>
                       <Button variant="subtle" color={colorScheme} size="lg" uppercase>Daniel Escobar</Button>
                     </Link>
-                    {/* 
-                    <Link href="/" passHref>
-                      <Text size="xl" weight={700} lineClamp={1}>
-                        Daniel Escobar
-                      </Text>
-                    </Link> */}
+
                   </HoverCard.Target>
                 </HoverCard>
                 <LightAndDarkModeButton></LightAndDarkModeButton>
