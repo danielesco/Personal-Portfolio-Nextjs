@@ -1,5 +1,8 @@
 import React from 'react'
-import { Paper, Title, Text, TypographyStylesProvider, Stack } from '@mantine/core';
+import {
+    Paper, Title, Text, TypographyStylesProvider, Stack,
+    Space
+} from '@mantine/core';
 
 function resume() {
     return (
@@ -9,9 +12,8 @@ function resume() {
                 <Paper shadow="xs" p="md" withBorder>
                     <Title align='center'>Resume</Title>
 
-                    <Text>
-                        Here's my resume!
-                    </Text>
+                    <Space h="md"></Space>
+                    <Title italic order={4}>Here's my resume!</Title>
                 </Paper>
 
 

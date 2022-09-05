@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <NavLink label="Resume" component="a" active={router.pathname === "/resume"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/projects" passHref>
-                    <NavLink label="Projects" component="a" active={router.pathname === "/projects"} color={colorScheme} variant="subtle"></NavLink>
+                    <NavLink label="Projects" component="a" active={router.pathname === "/projects/index"} color={colorScheme} variant="subtle"></NavLink>
                   </Link>
                   <Link href="/stats" passHref>
                     <NavLink label="Stats" component="a" active={router.pathname === "/stats"} color={colorScheme} variant="subtle"></NavLink>

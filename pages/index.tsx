@@ -12,11 +12,14 @@ import {
 } from '@mantine/core';
 import { ThemeContext } from '@emotion/react';
 
+
+
 const Home: NextPage = () => {
   const theme = useMantineTheme()
   return (
 
     <Stack >
+      <Head> <title>Daniel Escobar's Personal Portfolio</title></Head>
       <Paper shadow="xs" p="md" withBorder >
         <Title align='center' lineClamp={2}>Daniel Escobar's Personal Portfolio</Title>
         <Space h="lg"></Space>
